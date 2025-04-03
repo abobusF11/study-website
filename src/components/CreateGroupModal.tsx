@@ -1,7 +1,8 @@
 'use client';
 
 import {useState} from 'react';
-import BaseModal from "@/app/components/BaseModal";
+import BaseModal from "@/components/BaseModal";
+import {ClientCreate} from "@/types/GroupTypes";
 
 interface User {
     id: number;
@@ -17,14 +18,13 @@ interface Course {
 interface CreateGroupModalProps {
     isOpen: boolean;
     onClose: () => void;
-    onSave: (selectedCourse: string, users: User[]) => void;
+    onSave: (selectedCourseId: number, users: ClientCreate[]) => void;
     courses: Course[];
 }
 
 export default function CreateGroupModal({isOpen, onClose, onSave, courses}: CreateGroupModalProps) {
-    const [selectedCourse, setSelectedCourse] = useState('');
+    const [selectedCourseId, setSelectedCourseId] = useState(-1);
     const [users, setUsers] = useState<User[]>([{ id: 1, fio: '', inn: '' }]);
-
     const addUser = () => {
         setUsers([...users, { id: users.length + 1, fio: '', inn: '' }]);
     };
@@ -46,7 +46,7 @@ export default function CreateGroupModal({isOpen, onClose, onSave, courses}: Cre
 
     // Функция сброса данных формы
     const resetForm = () => {
-        setSelectedCourse('');
+        setSelectedCourseId(-1);
         setUsers([{ id: 1, fio: '', inn: '' }]);
     };
 
@@ -67,11 +67,11 @@ export default function CreateGroupModal({isOpen, onClose, onSave, courses}: Cre
                 <div className="mb-6">
                     <label className="block text-sm font-medium text-gray-700 mb-2">Выберите курс</label>
                     <select
-                        value={selectedCourse}
-                        onChange={(e) => setSelectedCourse(e.target.value)}
+                        value={selectedCourseId}
+                        onChange={(e) => setSelectedCourseId(Number(e.target.value))}
                         className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                     >
-                        <option value="">-- Выберите курс --</option>
+                        <option value={-1}>-- Выберите курс --</option>
                         {courses.map(course => (
                             <option key={course.id} value={course.id}>
                                 {course.name}
@@ -143,7 +143,7 @@ export default function CreateGroupModal({isOpen, onClose, onSave, courses}: Cre
 
                 <div className="flex justify-end space-x-3 mt-4">
                     <button
-                        onClick={() => onSave(selectedCourse, users)}
+                        onClick={() => {onSave(selectedCourseId, users.map(user => ({initials: user.fio, inn: user.inn}))); resetForm()}}
                         className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
                     >
                         Сохранить группу
