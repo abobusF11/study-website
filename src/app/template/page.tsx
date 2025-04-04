@@ -17,8 +17,8 @@ export default function Template() {
     const [isTeachersModalOpen, setIsTeachersModalOpen] = useState(false);
 
     const [protocols, setProtocols] = useState<Protocol[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    // const [loading, setLoading] = useState(true);
+    // const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchProtocols = async () => {
@@ -26,10 +26,10 @@ export default function Template() {
                 const response = await api.get('/template/protocol/show');
                 setProtocols(response.data);
             } catch (err) {
-                setError('Не удалось загрузить протоколы');
+                // setError('Не удалось загрузить протоколы');
                 console.error('Ошибка загрузки протоколов:', err);
             } finally {
-                setLoading(false);
+                // setLoading(false);
             }
         };
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useEffect, useRef } from 'react';
+import {ReactNode, useCallback, useEffect, useRef} from 'react';
 
 interface BaseModalProps {
     isOpen: boolean;
@@ -24,31 +24,28 @@ export default function BaseModal(
     }: BaseModalProps) {
     const modalRef = useRef<HTMLDivElement>(null);
 
-    const handleClose = () => {
-        // Если есть функция проверки и есть несохранённые данные
+    const handleClose = useCallback(() => {
         if (hasUnsavedData?.()) {
             const confirmClose = window.confirm(
                 'У вас есть несохранённые данные. Закрыть модальное окно?'
             );
             if (!confirmClose) return;
         }
-
         resetForm?.();
         onClose();
-    };
+    }, [hasUnsavedData, resetForm, onClose]);
 
 
-    // Закрытие при клике вне модалки
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-                handleClose();
+                handleClose(); // Используется handleClose из замыкания
             }
         };
 
         if (isOpen) document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, [isOpen, handleClose]);
+    }, [isOpen, handleClose]); // handleClose меняется при каждом рендере
 
     if (!isOpen) return null;
 

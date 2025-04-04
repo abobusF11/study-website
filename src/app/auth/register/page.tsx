@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { motion } from 'framer-motion';
 import api from "@/lib/api";
 import Link from "next/link";
+import axios from "axios";
 
 export default function RegisterPage() {
     const [login, setLogin] = useState<string>("");
@@ -24,8 +25,17 @@ export default function RegisterPage() {
                 password,
             });
             router.push("/auth/login"); // Перенаправляем на страницу входа после успешной регистрации
-        } catch (err: any) {
-            setError(err.response?.data?.detail || "Registration failed");
+        } catch (err: unknown) {
+            if (axios.isAxiosError(err)) {
+                // Типизированная обработка ошибок Axios
+                setError(err.response?.data?.detail || "Registration failed");
+            } else if (err instanceof Error) {
+                // Обработка стандартных ошибок JavaScript
+                setError(err.message);
+            } else {
+                // Обработка неизвестных ошибок
+                setError("Registration failed");
+            }
         } finally {
             setIsLoading(false);
         }
