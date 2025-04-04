@@ -94,7 +94,9 @@ export default function CreateProtocolModal({isOpen, onClose, onSave}: {
                     </label>
                     <DatePicker
                         selected={startDate}
-                        onChange={(date: Date) => setStartDate(date)}
+                        onChange={(date: Date | null) => {
+                            if (date) setStartDate(date);
+                        }}
                         dateFormat="dd.MM.yyyy"
                         className="w-full p-2 border border-gray-300 rounded-md"
                     />
@@ -105,7 +107,9 @@ export default function CreateProtocolModal({isOpen, onClose, onSave}: {
                     </label>
                     <DatePicker
                         selected={endDate}
-                        onChange={(date: Date) => setEndDate(date)}
+                        onChange={(date: Date | null) => {
+                            if (date) setEndDate(date);
+                        }}
                         dateFormat="dd.MM.yyyy"
                         className="w-full p-2 border border-gray-300 rounded-md"
                         minDate={startDate} // Окончание не может быть раньше начала
