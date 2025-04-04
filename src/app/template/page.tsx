@@ -153,6 +153,7 @@ export default function Template() {
                 </button>
             </div>
 
+            <ProtocolTable protocols={protocols} onDelete={handleDeleteProtocol}/>
 
             <div className="mt-4 flex justify-between items-center">
                 <div className="text-sm text-gray-500">
