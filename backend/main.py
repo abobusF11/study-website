@@ -1,21 +1,35 @@
 from fastapi import FastAPI
-from backend.app.auth.routes import router as auth_router
-from backend.app.template.group.routes import router as group_router
-from backend.app.template.protocol.routes import router as protocol_router
-from backend.app.template.teachers.routes import router as teacher_router
 from fastapi.middleware.cors import CORSMiddleware
+import os
+
+# Изменённые импорты (используйте относительные пути)
+from .app.auth.routes import router as auth_router
+from .app.template.group.routes import router as group_router
+from .app.template.protocol.routes import router as protocol_router
+from .app.template.teachers.routes import router as teacher_router
 
 app = FastAPI()
 
-# CORS
+# Получаем настройки из переменных окружения
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
+PORT = int(os.getenv("PORT", 8000))
+
+# CORS с динамическим URL фронтенда
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Укажите адрес фронтенда
-    allow_credentials=True,  # Разрешить куки
-    allow_methods=["*"],  # или конкретные методы ["GET", "POST"]
+    allow_origins=[FRONTEND_URL],
+    allow_credentials=True,
+    allow_methods=["*"],
     allow_headers=["*"],
 )
-app.include_router(auth_router)
-app.include_router(group_router)
-app.include_router(protocol_router)
-app.include_router(teacher_router)
+
+# Роутеры
+app.include_router(auth_router, prefix="/api/auth")
+app.include_router(group_router, prefix="/api/groups")
+app.include_router(protocol_router, prefix="/api/protocols")
+app.include_router(teacher_router, prefix="/api/teachers")
+
+# Тестовый эндпоинт
+@app.get("/")
+async def root():
+    return {"message": "API is working"}
