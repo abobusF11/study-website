@@ -1,10 +1,11 @@
+import os
 from typing import Any, AsyncGenerator
 
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from sqlalchemy.orm import declarative_base
 
 # URL для подключения к PostgreSQL
-DATABASE_URL = "postgresql+asyncpg://postgres:Navi_shigamuto234@localhost/study"
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Создаем асинхронный движок
 engine = create_async_engine(
