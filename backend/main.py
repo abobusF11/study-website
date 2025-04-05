@@ -11,7 +11,7 @@ from .app.template.teachers.routes import router as teacher_router
 app = FastAPI()
 
 # Получаем настройки из переменных окружения
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
+FRONTEND_URL = os.getenv("FRONTEND_URL")
 PORT = int(os.getenv("PORT", 8000))
 
 # CORS с динамическим URL фронтенда
