@@ -24,10 +24,10 @@ app.add_middleware(
 )
 
 # Роутеры
-app.include_router(auth_router, prefix="/api/auth")
-app.include_router(group_router, prefix="/api/groups")
-app.include_router(protocol_router, prefix="/api/protocols")
-app.include_router(teacher_router, prefix="/api/teachers")
+app.include_router(auth_router)
+app.include_router(group_router)
+app.include_router(protocol_router)
+app.include_router(teacher_router)
 
 # Тестовый эндпоинт
 @app.get("/")
