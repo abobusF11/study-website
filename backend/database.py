@@ -1,3 +1,5 @@
+from typing import Any, AsyncGenerator
+
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from sqlalchemy.orm import declarative_base
 
@@ -21,7 +23,7 @@ async_session_maker = async_sessionmaker(
     autoflush=False
 )
 
-async def get_db() -> AsyncSession:
+async def get_db() -> AsyncGenerator[AsyncSession | Any, Any]:
     async with async_session_maker() as session:  # Создаём новую сессию
         try:
             yield session  # Отдаём сессию в route
