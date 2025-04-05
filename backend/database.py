@@ -1,11 +1,9 @@
-import os
-from typing import AsyncGenerator
-
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from sqlalchemy.orm import declarative_base
 
 # URL для подключения к PostgreSQL
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = "postgresql+asyncpg://postgres:Navi_shigamuto234@localhost/study"
+
 # Создаем асинхронный движок
 engine = create_async_engine(
     DATABASE_URL,
@@ -23,7 +21,7 @@ async_session_maker = async_sessionmaker(
     autoflush=False
 )
 
-async def get_db() -> AsyncGenerator[AsyncSession, None]:
+async def get_db() -> AsyncSession:
     async with async_session_maker() as session:  # Создаём новую сессию
         try:
             yield session  # Отдаём сессию в route
