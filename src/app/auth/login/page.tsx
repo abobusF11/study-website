@@ -32,8 +32,7 @@ export default function LoginPage() {
             await api.post<Token>("/auth/login", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                },
-                withCredentials: true,
+                }
             });
             router.push("/dashboard");
             loginStatus(); // Устанавливаем статус авторизации
