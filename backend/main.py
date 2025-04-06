@@ -14,7 +14,7 @@ PORT = int(os.getenv("PORT", 8000))
 # CORS с динамическим URL фронтенда
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://7e0e-2a12-3e80-400-df-00.ngrok-free.app"],
+    allow_origins=[FRONTEND_URL],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
