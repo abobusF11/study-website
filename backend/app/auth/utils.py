@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 import os
 
 # Секретный ключ и алгоритм
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY", "d3b07384d113edec49eaa6238ad5ff00c1f169f3b7e9d5a5a5a5a5a5a5a5a5a5")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 

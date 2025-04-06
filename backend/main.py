@@ -1,15 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
-
-# Изменённые импорты (используйте относительные пути)
-from .app.auth.routes import router as auth_router
-from .app.template.group.routes import router as group_router
-from .app.template.protocol.routes import router as protocol_router
-from .app.template.teachers.routes import router as teacher_router
+from backend.app.auth.routes import router as auth_router
+from backend.app.template.group.routes import router as group_router
+from backend.app.template.protocol.routes import router as protocol_router
+from backend.app.template.teachers.routes import router as teacher_router
 
 app = FastAPI()
-
 # Получаем настройки из переменных окружения
 FRONTEND_URL = os.getenv("FRONTEND_URL")
 PORT = int(os.getenv("PORT", 8000))
@@ -17,7 +14,7 @@ PORT = int(os.getenv("PORT", 8000))
 # CORS с динамическим URL фронтенда
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[FRONTEND_URL],
+    allow_origins=["https://7e0e-2a12-3e80-400-df-00.ngrok-free.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
