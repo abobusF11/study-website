@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
@@ -7,6 +8,10 @@ from backend.app.template.protocol.routes import router as protocol_router
 from backend.app.template.teachers.routes import router as teacher_router
 
 app = FastAPI()
+
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+if os.path.exists(dotenv_path):
+    load_dotenv(dotenv_path)
 # Получаем настройки из переменных окружения
 FRONTEND_URL = os.getenv("FRONTEND_URL")
 PORT = int(os.getenv("PORT", 8000))
