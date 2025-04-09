@@ -8,4 +8,5 @@ class Metodists(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     login = Column(String, index=True)
+    lvl = Column(SmallInteger)
     hashed_password = Column(String)

@@ -1,10 +1,19 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 
-# Схема для клиента
+
+
 class ClientCreate(BaseModel):
     initials: str
-    inn: str
+    inn: str| None = None
+    group: int
+    org: int
+    reason_check: int | None = None
+    safety: int | None = None
+    result_check: int | None = None
+
+    class Config:
+        from_attributes = True
 
 # Схема для создания группы (прием от клиента)
 class GroupCreateRequest(BaseModel):
@@ -20,7 +29,12 @@ class GroupCreateResponse(BaseModel):
 class Client(BaseModel):
     id: int
     initials: str
-    inn: str
+    inn: str | None = None
+    group: int
+    org: str
+    reason_check: int | None = None
+    safety: int | None = None
+    result_check: int | None = None
 
 class GroupResponse(BaseModel):
     id: int

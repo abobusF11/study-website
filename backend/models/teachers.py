@@ -8,3 +8,4 @@ class Teachers(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     initials = Column(String, index=True)
+    status = Column(String, index=True)

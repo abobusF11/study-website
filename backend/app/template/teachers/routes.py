@@ -3,7 +3,7 @@ from fastapi import HTTPException, APIRouter, Depends
 from sqlalchemy import delete,select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from backend.app.template.teachers.models import Teachers
+from backend.models.teachers import Teachers
 from backend.app.template.teachers.schemas import *
 from backend.database import get_db
 

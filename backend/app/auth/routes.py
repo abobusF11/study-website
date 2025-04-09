@@ -1,16 +1,13 @@
-import json
-
 from fastapi import *
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from jose import JWTError, jwt
-from . import models, schemas, utils
-from .models import Metodists
-from .utils import SECRET_KEY, ALGORITHM
+from . import schemas
+from backend.models.auth import *
+from .utils import *
 from ...database import get_db
 
-router = APIRouter(prefix="/auth", tags=["auth"])
+router = APIRouter(tags=["auth"])
 
 async def get_current_user(
         request: Request,  # Добавляем запрос для доступа к кукам
@@ -28,6 +25,7 @@ async def get_current_user(
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         login: str = payload.get("sub")
+        print(login)
         if login is None:
             raise credentials_exception
     except JWTError:
@@ -35,7 +33,7 @@ async def get_current_user(
 
     # Проверка пользователя в БД
     result = await db.execute(
-        select(models.Metodists).where(models.Metodists.login == login)
+        select(Metodists).where(Metodists.login == login)
     )
     user = result.scalars().first()
     if user is None:
@@ -49,9 +47,8 @@ def read_user_me(current_user: Metodists = Depends(get_current_user)):
 
 @router.post("/register", response_model=schemas.UserResponse)
 async def register(user: schemas.UserCreate, db: AsyncSession = Depends(get_db)):
-    # Проверяем существование пользователя с таким логином
     result = await db.execute(
-        select(models.Metodists).where(models.Metodists.login == user.login)
+        select(Metodists).where(Metodists.login == user.login)
     )
     db_user = result.scalars().first()
 
@@ -62,12 +59,13 @@ async def register(user: schemas.UserCreate, db: AsyncSession = Depends(get_db))
         )
 
     # Хешируем пароль
-    hashed_password = utils.get_password_hash(user.password)
+    hashed_password = get_password_hash(user.password)
 
     # Создаем нового пользователя
-    db_user = models.Metodists(
+    db_user = Metodists(
         login=user.login,
         hashed_password=hashed_password,
+        lvl=2
     )
 
     # Добавляем и сохраняем пользователя
@@ -76,46 +74,62 @@ async def register(user: schemas.UserCreate, db: AsyncSession = Depends(get_db))
     await db.refresh(db_user)
     return db_user
 
-@router.post("/login", response_model=schemas.Token)
+
+@router.post("/login", response_model=schemas.UserResponse)
 async def login(
+        response: Response,
         form_data: OAuth2PasswordRequestForm = Depends(),
         db: AsyncSession = Depends(get_db)
 ):
-    # Асинхронный запрос к базе данных
+    # Ищем пользователя в базе
     result = await db.execute(
-        select(models.Metodists).where(models.Metodists.login == form_data.username)
+        select(Metodists).where(Metodists.login == form_data.username)
     )
-    user = result.scalars().first()
+    db_user = result.scalars().first()
 
-    # Проверка пользователя и пароля
-    if not user or not utils.verify_password(form_data.password, user.hashed_password):
+    if not db_user:
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Incorrect email or password"
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect username or password"
         )
 
-    # Создание токена
-    access_token = utils.create_access_token(data={"sub": user.login})
+    # Проверяем пароль
+    if not verify_password(form_data.password, db_user.hashed_password):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect username or password"
+        )
 
-    response = Response(
-        content=json.dumps({
-            "message": "Login successful",
-            "token_type": "bearer"
-        }),
-        media_type="application/json"
+    access_token_expires = timedelta(hours=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = create_access_token(
+        data={"sub": db_user.login, "lvl": db_user.lvl},
+        expires_delta=access_token_expires
     )
 
     response.set_cookie(
         key="token",
         value=access_token,
         httponly=True,
+        max_age=ACCESS_TOKEN_EXPIRE_MINUTES * 60,
         secure=False,
-        samesite="lax",
-        max_age=3600,
-        path="/",
+        samesite="lax"
     )
 
-    return response
+
+    return db_user
+
+@router.get("/admin-panel")
+async def admin_panel(user = Depends(require_lvl(0))):
+    return {"message": "Admin access granted"}
+
+@router.get("/moderator-tools")
+async def moderator_tools(user = Depends(require_lvl(1))):
+    return {"message": "Moderator access granted"}
+
+@router.get("/user-dashboard")
+async def user_dashboard(user = Depends(require_lvl(2))):
+    return {"message": "User access granted"}
+
 
 @router.post("/logout")
 async def logout():

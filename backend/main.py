@@ -4,7 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 import os
 from backend.app.auth.routes import router as auth_router
 from backend.app.template.group.routes import router as group_router
-from backend.app.template.protocol.routes import router as protocol_router
 from backend.app.template.teachers.routes import router as teacher_router
 
 app = FastAPI()
@@ -12,7 +11,7 @@ app = FastAPI()
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 if os.path.exists(dotenv_path):
     load_dotenv(dotenv_path)
-# Получаем настройки из переменных окружения
+
 FRONTEND_URL = os.getenv("FRONTEND_URL")
 PORT = int(os.getenv("PORT", 8000))
 
@@ -26,10 +25,9 @@ app.add_middleware(
 )
 
 # Роутеры
-app.include_router(auth_router)
-app.include_router(group_router)
-app.include_router(protocol_router)
-app.include_router(teacher_router)
+app.include_router(auth_router, prefix="/api/auth")
+app.include_router(group_router, prefix="/api/template/group")
+app.include_router(teacher_router, prefix="/api/template/teachers")
 
 # Тестовый эндпоинт
 @app.get("/")
