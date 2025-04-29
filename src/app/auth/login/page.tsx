@@ -1,10 +1,11 @@
 "use client";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { useRouter } from "next/navigation";
 import { motion } from 'framer-motion';
 import api from "@/lib/api";
 import Link from "next/link";
 import {useAuth} from "@/app/ClientLayout";
+import {authMe} from "@/utils/request";
 
 interface Token {
     access_token: string;
@@ -17,6 +18,7 @@ export default function LoginPage() {
     const [password, setPassword] = useState<string>("");
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -28,15 +30,15 @@ export default function LoginPage() {
             const formData = new FormData();
             formData.append('username', login);
             formData.append('password', password);
-
+            console.log(formData);
             await api.post<Token>("/auth/login", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 }
             });
-            router.push("/dashboard");
-            loginStatus(); // Устанавливаем статус авторизации
-            router.push("/dashboard");
+            setIsLoggedIn(true)
+            loginStatus();
+            router.push("/template");
         } catch (error) {
             console.error('Login error:', error);
             setError('Неверный логин или пароль');
@@ -44,6 +46,21 @@ export default function LoginPage() {
             setIsLoading(false);
         }
     };
+
+    const [userData, setUserData] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                await authMe();
+                setIsLoggedIn(true);
+            } catch (error) {
+                console.error("Ошибка:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <div className="w-full max-w-md">
@@ -132,17 +149,19 @@ export default function LoginPage() {
                     </div>
                 </form>
 
-                <div className="text-center mt-4">
-                    <p className="text-sm text-gray-600">
-                        Нет аккаунта?{' '}
-                        <Link
-                            href="/auth/register"
-                            className="font-medium text-blue-600 hover:text-blue-500 hover:underline"
-                        >
-                            Зарегистрироваться
-                        </Link>
-                    </p>
-                </div>
+                {isLoggedIn && ( // Показываем только если не авторизован
+                    <div className="text-center mt-4">
+                        <p className="text-sm text-gray-600">
+                            Нет аккаунта?{' '}
+                            <Link
+                                href="/auth/register"
+                                className="font-medium text-blue-600 hover:text-blue-500 hover:underline"
+                            >
+                                Зарегистрироваться
+                            </Link>
+                        </p>
+                    </div>
+                )}
             </motion.div>
         </div>
     );

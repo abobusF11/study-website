@@ -1,45 +1,100 @@
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List
+from datetime import date
+
+from backend.app.template.teachers.schemas import TeacherResponse
 
 
-
+# Создание группы
 class ClientCreate(BaseModel):
     initials: str
-    inn: str| None = None
-    group: int
-    org: int
-    reason_check: int | None = None
+    inn: str | None = None
+    org: str
     safety: int | None = None
-    result_check: int | None = None
+    reg_num: int | None = None
 
     class Config:
         from_attributes = True
 
-# Схема для создания группы (прием от клиента)
-class GroupCreateRequest(BaseModel):
+
+class CourseCreate(BaseModel):
     course_id: int
     clients: List[ClientCreate]
 
-# Схема ответа с созданной группой
+
+class GroupCreate(BaseModel):
+    date: date
+    courses: List[CourseCreate]
+    teachers: List[int] | None = None
+
+
+# Обновления
 class GroupCreateResponse(BaseModel):
     id: int
-    course_id: int
-    clients: List[ClientCreate]
 
-class Client(BaseModel):
+
+class ClientResponse(BaseModel):
     id: int
     initials: str
     inn: str | None = None
-    group: int
     org: str
-    reason_check: int | None = None
     safety: int | None = None
-    result_check: int | None = None
+    reg_num: int | None = None
+
+    class Config:
+        from_attributes = True
+
+class CourseResponse(BaseModel):
+    id: int
+    course_id: int
+    group_id: int
+    clients: List[ClientResponse]
+
+class Config:
+        from_attributes = True
 
 class GroupResponse(BaseModel):
     id: int
+    date: date
+    courses: List[CourseResponse]
+    teachers: List[TeacherResponse] | None = None
+
+    class Config:
+        from_attributes = True
+
+#Обновления
+class ClientUpdate(BaseModel):
+    id: int
+    initials: str
+    inn: str | None = None
+    org: str
+    safety: int | None = None
+    reg_num: int | None = None
+
+    class Config:
+        from_attributes = True
+
+class CourseUpdate(BaseModel):
+    id: int
     course_id: int
-    clients: List[Client]
+    clients: List[ClientUpdate]
+
+    class Config:
+        from_attributes = True
+
+
+class GroupUpdate(BaseModel):
+    id: int
+    date: date
+    courses: List[CourseUpdate]
+    teachers: List[int]
+
+    class Config:
+        from_attributes = True
+
+class GroupUpdateResponse(BaseModel):
+    id: int
+
 
 # Схема для ответа с ошибкой
 class ErrorResponse(BaseModel):

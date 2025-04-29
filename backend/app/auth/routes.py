@@ -1,9 +1,11 @@
+import logging
+
 from fastapi import *
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from . import schemas
-from backend.models.auth import *
+from backend.models.auth_model import *
 from .utils import *
 from ...database import get_db
 
@@ -25,7 +27,6 @@ async def get_current_user(
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         login: str = payload.get("sub")
-        print(login)
         if login is None:
             raise credentials_exception
     except JWTError:
@@ -46,11 +47,13 @@ def read_user_me(current_user: Metodists = Depends(get_current_user)):
     return current_user
 
 @router.post("/register", response_model=schemas.UserResponse)
-async def register(user: schemas.UserCreate, db: AsyncSession = Depends(get_db)):
+async def register(user: schemas.UserCreate, db: AsyncSession = Depends(get_db), isLogin = require_lvl(0)):
     result = await db.execute(
         select(Metodists).where(Metodists.login == user.login)
     )
     db_user = result.scalars().first()
+
+    logging.INFO(isLogin)
 
     if db_user:
         raise HTTPException(
@@ -65,7 +68,7 @@ async def register(user: schemas.UserCreate, db: AsyncSession = Depends(get_db))
     db_user = Metodists(
         login=user.login,
         hashed_password=hashed_password,
-        lvl=2
+        lvl=0
     )
 
     # Добавляем и сохраняем пользователя
@@ -115,20 +118,7 @@ async def login(
         samesite="lax"
     )
 
-
     return db_user
-
-@router.get("/admin-panel")
-async def admin_panel(user = Depends(require_lvl(0))):
-    return {"message": "Admin access granted"}
-
-@router.get("/moderator-tools")
-async def moderator_tools(user = Depends(require_lvl(1))):
-    return {"message": "Moderator access granted"}
-
-@router.get("/user-dashboard")
-async def user_dashboard(user = Depends(require_lvl(2))):
-    return {"message": "User access granted"}
 
 
 @router.post("/logout")

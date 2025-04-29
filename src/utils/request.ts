@@ -1,17 +1,61 @@
 import api from "@/lib/api";
-import {ClientCreate, Group, GroupCreateResponse} from "@/types/GroupTypes";
-import {ProtocolCreateResponse} from "@/types/ProtocolTypes";
+import {Group, GroupCreate, GroupCreateResponse, GroupUpdate, GroupUpdateResponse} from "@/types/GroupTypes";
 import {TeacherCreate} from "@/types/TeacherTypes";
 
-
-export const createGroup = async (selectedCourseId: number, users: ClientCreate[]): Promise<GroupCreateResponse> => {
+export const showGroups = async (type: string): Promise<Group[]> => {
+    //type: active, archive, from-user
     try {
-        const response = await api.post<GroupCreateResponse>(
-            "/template/group/create",
-            {
-                course_id: selectedCourseId,
-                clients: users
-            },
+        if (type != "from-user") {
+            const response = await api.get<Group[]>(`/template/group/show?date_filter=${type}`);
+            return response.data;
+        } else {
+            const response = await api.get<Group[]>(`/clients/group/show`);
+            console.log(JSON.stringify(response.data));
+            return response.data;
+        }
+    } catch (error) {
+        console.error('Full error:', error);
+        throw error;
+    }
+};
+
+export const createGroup = async (group: GroupCreate, fromUser: boolean): Promise<GroupCreateResponse> => {
+    try {
+        if (fromUser) {
+            console.log(JSON.stringify(group));
+            const response = await api.post<GroupCreateResponse>(
+                "/clients/group/create",
+                group,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                }
+            );
+            return response.data;
+        } else {
+            const response = await api.post<GroupCreateResponse>(
+                "/template/group/create",
+                group,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                }
+            );
+            return response.data;
+        }
+    } catch (error) {
+        console.error('Full error:', error);
+        throw error;
+    }
+};
+
+export const updateGroup = async (group: GroupUpdate): Promise<GroupUpdateResponse> => {
+    try {
+        const response = await api.put(
+            "/template/group/update",
+            group,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -25,25 +69,14 @@ export const createGroup = async (selectedCourseId: number, users: ClientCreate[
     }
 };
 
-export const createProtocol = async (
-    startDate: Date,
-    endDate: Date,
-    groupIds: Group[]
-): Promise<ProtocolCreateResponse> => {
+export const deleteGroup = async (groupId: number) => {
     try {
-        // Форматируем даты в строки в формате YYYY-MM-DD
-        const formatDate = (date: Date): string => {
-            return date.toISOString().split('T')[0];
-        };
-
-        const response = await api.post<ProtocolCreateResponse>(
-            "/template/protocol/create",
+        const response = await api.delete(
+            "/template/group/delete",
             {
-                start_date: formatDate(startDate),
-                end_date: formatDate(endDate),
-                group_ids: groupIds.map(group => group.id),
-            },
-            {
+                params: {
+                    group_id: String(groupId)
+                },
                 headers: {
                     'Content-Type': 'application/json',
                 }
@@ -51,18 +84,44 @@ export const createProtocol = async (
         );
         return response.data;
     } catch (error) {
-        console.error('Error creating protocol:', error);
+        console.error('Full error:', error);
         throw error;
     }
-};
+}
+
+export const deleteUserGroup = async (groupId: number) => {
+    try {
+        const response = await api.delete(
+            "/clients/group/delete",
+            {
+                params: {
+                    group_id: String(groupId)
+                },
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }
+        );
+        return response.data;
+    } catch (error) {
+        console.error('Full error:', error);
+        throw error;
+    }
+}
+
 
 export const createTeachers = async (
     teachers: TeacherCreate[]
-): Promise<ProtocolCreateResponse> => {
+) => {
     try {
-        const response = await api.post<ProtocolCreateResponse>(
+        const requestData = teachers.map(teacher => ({
+            initials: teacher.initials,
+            status: teacher.status,
+            id: teacher.id ?? null // Если id undefined или null, явно ставим null
+        }));
+        const response = await api.post(
             "/template/teacher/replace-all",
-            teachers,
+            requestData,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -75,3 +134,13 @@ export const createTeachers = async (
         throw error;
     }
 };
+
+export const authMe = async () => {
+    try {
+        const response = await api.get("auth/me")
+        console.log(response)
+    } catch (error) {
+        console.error('Error creating authMe:', error);
+        throw error;
+    }
+}

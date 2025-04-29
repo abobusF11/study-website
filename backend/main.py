@@ -5,6 +5,7 @@ import os
 from backend.app.auth.routes import router as auth_router
 from backend.app.template.group.routes import router as group_router
 from backend.app.template.teachers.routes import router as teacher_router
+from backend.app.clients.group.routes import router as clients_group_router
 
 app = FastAPI()
 
@@ -13,12 +14,11 @@ if os.path.exists(dotenv_path):
     load_dotenv(dotenv_path)
 
 FRONTEND_URL = os.getenv("FRONTEND_URL")
-PORT = int(os.getenv("PORT", 8000))
 
 # CORS с динамическим URL фронтенда
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[FRONTEND_URL],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -27,7 +27,8 @@ app.add_middleware(
 # Роутеры
 app.include_router(auth_router, prefix="/api/auth")
 app.include_router(group_router, prefix="/api/template/group")
-app.include_router(teacher_router, prefix="/api/template/teachers")
+app.include_router(teacher_router, prefix="/api/template/teacher")
+app.include_router(clients_group_router, prefix="/api/clients/group")
 
 # Тестовый эндпоинт
 @app.get("/")

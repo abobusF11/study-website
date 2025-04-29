@@ -7,7 +7,7 @@ from fastapi import Depends, HTTPException, status, Request
 # Секретный ключ и алгоритм
 SECRET_KEY = os.getenv("SECRET_KEY", "d3b07384d113edec49eaa6238ad5ff00c1f169f3b7e9d5a5a5a5a5a5a5a5a5a5")
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+ACCESS_TOKEN_EXPIRE_MINUTES = 240
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

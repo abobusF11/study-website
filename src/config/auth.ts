@@ -1,6 +1,6 @@
 export const authConfig = {
-    publicRoutes: ['/', '/about'],
-    protectedRoutes: ['/template', '/dashboard', '/profile'],
-    authRoutes: ['/auth/login', '/auth/register'],
-    defaultRedirect: '/dashboard'
+    publicRoutes: ['/', '/about', "/api/clients/group/create"],
+    protectedRoutes: ['/template', '/dashboard', '/archive', '/orders'],
+    authRoutes: ['/auth/login'],
+    defaultRedirect: '/template'
 } as const

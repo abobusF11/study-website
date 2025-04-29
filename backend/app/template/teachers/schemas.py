@@ -1,15 +1,17 @@
 from pydantic import BaseModel
 
-class TeacherBase(BaseModel):
+class Teacher(BaseModel):
+    id: int
     initials: str
+    status: int
 
-class TeacherCreate(TeacherBase):
-    pass
+class TeacherCreate(BaseModel):
+    id: int | None
+    initials: str
+    status: int
 
-class TeacherUpdate(TeacherBase):
-    pass
 
-class TeacherResponse(TeacherBase):
+class TeacherResponse(Teacher):
     id: int
 
     class Config:

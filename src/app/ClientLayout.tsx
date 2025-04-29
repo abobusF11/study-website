@@ -69,14 +69,16 @@ export default function ClientLayout({ children }: {
                 {/* Навигация */}
                 <nav className="bg-blue-600 text-white p-4 shadow-md">
                     <div className="container mx-auto flex justify-between items-center">
-                        <Link href="/" className="text-2xl font-bold">Название сайта</Link>
+                        <Link href="/" className="text-2xl font-bold">ООО "УМЦ "Энергоэффективность""</Link>
                         <ul className="flex space-x-4 items-center">
                             <li><Link href="/" className="hover:underline">Главная</Link></li>
                             <li><Link href="/about" className="hover:underline">О нас</Link></li>
+                            <li><Link href="/service" className="hover:underline">Услуги</Link></li>
 
                             {authState.isAuthenticated ? (
                                 <>
                                     <li><Link href="/template" className="hover:underline">Шаблон</Link></li>
+                                    <li><Link href="/auth/register" className="hover:underline">Зарегистрировать</Link></li>
                                     <li>
                                         <button
                                             onClick={handleLogout}
@@ -87,6 +89,7 @@ export default function ClientLayout({ children }: {
                                     </li>
                                 </>
                             ) : (
+
                                 <li>
                                     <Link
                                         href="/auth/login"
@@ -108,7 +111,7 @@ export default function ClientLayout({ children }: {
                 {/* Подвал */}
                 <footer className="bg-gray-800 text-white p-4 mt-8">
                     <div className="container mx-auto text-center">
-                        <p>© 2025 Название сайта. Все права защищены.</p>
+                        <p>© 2025 ООО "УМЦ "Энергоэффективность"". Все права защищены.</p>
                     </div>
                 </footer>
             </div>
