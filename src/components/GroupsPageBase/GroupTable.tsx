@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Group, GroupType} from "@/types/GroupTypes";
+import {Group} from "@/types/GroupTypes";
 import {CourseField, CourseId, COURSES} from "@/types/CourseTypes";
 import CreateGroupModal from "@/components/CreateGroupModal/CreateGroupModal";
 
@@ -7,7 +7,7 @@ interface GroupTableProps {
     groups: Group[];
     onDelete: (protocolId: number) => void;
     onRefresh: () => void;
-    type: "metodist" | null;
+    type: "metodist" | null | undefined;
 }
 
 export const GroupTable = ({groups, onDelete, onRefresh, type}: GroupTableProps) => {

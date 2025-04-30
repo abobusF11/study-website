@@ -5,5 +5,5 @@ export interface CreateGroupModalProps {
     onClose: () => void;
     refresh?: () => void;
     group?: Group | null;
-    type?: "metodist" | null;
+    type?: "metodist" | null | undefined;
 }

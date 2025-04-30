@@ -4,7 +4,7 @@ import {CourseField} from "@/types/CourseTypes";
 interface UserTableProps {
     courseFields: readonly CourseField[];
     course: CourseGroup;
-    handleUserChange: (user_id: number, field: keyof Client, value: string) => void;
+    handleUserChange: (user_id: number, field: keyof Client, value: string, courseId?: number) => void;
     removeUser: (idUser: number) => void;
 }
 

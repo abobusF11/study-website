@@ -1,7 +1,6 @@
 import {CourseId, CourseListItem, COURSES} from "@/types/CourseTypes";
 import UserTable from "@/components/GroupsPageBase/UserTable";
-import {CourseGroup} from "@/types/GroupTypes";
-import {Client} from "undici-types";
+import {Client, CourseGroup} from "@/types/GroupTypes";
 
 interface CourseSectionProps {
     course: CourseGroup;
@@ -9,7 +8,7 @@ interface CourseSectionProps {
     onAddUser: () => void;
     onRemove: () => void;
     coursesList: CourseListItem[];
-    handleUserChange: (id: number, field: keyof Client, value: string) => void;
+    handleUserChange: (user_id: number, field: keyof Client, value: string, courseId?: number) => void;
     removeUser: (courseId: number, userId: number) => void;
 }
 
