@@ -157,6 +157,7 @@ async def show_groups(
                     status=teacher_group.teacher.status
                 )
                 for teacher_group in group.teacher_groups
+                if teacher_group.teacher
             ]
         )
         for group in filtered_groups

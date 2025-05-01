@@ -22,4 +22,4 @@ class TeachersGroup(Base):
     group_id = Column(Integer, ForeignKey('groups.id'), index=True)
 
     group = relationship("Group", back_populates="teacher_groups")
-    teacher = relationship("Teachers", back_populates="teacher_groups")
+    teacher = relationship("Teachers", cascade="all,delete", lazy="joined")
