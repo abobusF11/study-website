@@ -41,21 +41,22 @@ async def get_current_user(request: Request):
         # Декодируем JWT из куки
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         login: str = payload.get("sub")
-        user_lvl: int = payload.get("lvl")
-        if login is None or user_lvl is None:
+        user_role: str = payload.get("role")
+        if login is None or user_role is None:
             raise credentials_exception
     except JWTError:
         raise credentials_exception
 
-    return {"login": login, "lvl": user_lvl}
+    return {"login": login, "role": user_role}
+
 
 # Зависимость для проверки уровня доступа
-def require_lvl(min_lvl: int):
+def require_role(role: str):
     def dependency(current_user: dict = Depends(get_current_user)):
-        if current_user["lvl"] > min_lvl:
+        if role == "admin" and current_user["role"] != "admin":
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
-                detail=f"Requires access level {min_lvl} or higher"
+                detail=f"Requires access level higher"
             )
         return current_user
     return dependency

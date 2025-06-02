@@ -7,7 +7,7 @@ class UserCreate(BaseModel):
 class UserResponse(BaseModel):
     id: int
     login: str
-    lvl: int
+    role: str
 
     class Config:
         from_attributes = True

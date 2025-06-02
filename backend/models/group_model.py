@@ -1,28 +1,28 @@
-from sqlalchemy import Column, Integer, String, SmallInteger, Date
+from sqlalchemy import Column, Integer, String, SmallInteger, Date, Boolean, ForeignKey
+from sqlalchemy.orm import relationship
 
 from backend.database import Base
-
-
-from sqlalchemy import ForeignKey
-from sqlalchemy.orm import relationship
 
 class Group(Base):
     __tablename__ = "groups"
 
     id = Column(Integer, primary_key=True, index=True)
     date = Column(Date, index=True)  # Общая дата для группы
+    isOrder = Column(Boolean, index=True) # Заявки ли от пользователя или нет
 
     courses = relationship("CourseGroup", back_populates="group", cascade="all, delete-orphan")
     teacher_groups = relationship("TeachersGroup", back_populates="group", cascade="all, delete-orphan")
 
-class CourseGroup(Base):  # Переименовано для единообразия
-    __tablename__ = "courses_groups"  # Лучше использовать snake_case
+class CourseGroup(Base):
+    __tablename__ = "courses_groups"
 
     id = Column(Integer, primary_key=True, index=True)
-    course_id = Column(SmallInteger, index=True)  # ID из справочника курсов
+    course_id = Column(Integer, ForeignKey('courses.id'), index=True)  # Ссылка на таблицу курсов
     group_id = Column(Integer, ForeignKey('groups.id'), index=True)
+    
     # Связи
     group = relationship("Group", back_populates="courses")
+    course_info = relationship("Courses", back_populates="course_groups")
     clients = relationship("Client", back_populates="course_group", cascade="all, delete-orphan")
 
 class Client(Base):
