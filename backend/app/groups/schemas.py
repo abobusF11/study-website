@@ -1,104 +1,66 @@
-from pydantic import BaseModel
-from typing import List
+from pydantic import BaseModel, Field
+from typing import List, Optional
 from datetime import date
-
 from backend.app.teachers.schemas import TeacherResponse
 
-
-# Создание группы
-class ClientCreate(BaseModel):
-    initials: str
-    inn: str | None = None
-    org: str
-    safety: int | None = None
-    reg_num: int | None = None
+# Базовые схемы
+class ClientBase(BaseModel):
+    initials: Optional[str] = None
+    inn: Optional[str] = None
+    org: Optional[str] = None
+    safety: Optional[int] = None
+    reg_num: Optional[int] = None
+    position: Optional[str] = None
+    org_inn: Optional[str] = None
+    snils: Optional[str] = None
 
     class Config:
         from_attributes = True
 
+class CourseBase(BaseModel):
+    course_id: Optional[int] = None
 
-class CourseCreate(BaseModel):
-    course_id: int
+class GroupBase(BaseModel):
+    date: date
+    isOrder: bool
+
+# Создание
+class ClientCreate(ClientBase):
+    pass
+
+class CourseCreate(CourseBase):
     clients: List[ClientCreate]
 
-
-class GroupCreate(BaseModel):
-    date: date
-    courses: List[CourseCreate]
-    teachers: List[int] | None = None
-    isOrder: bool
-
-
-
-# Обновления
-class GroupCreateResponse(BaseModel):
-    id: int
-
-
-class ClientResponse(BaseModel):
-    id: int
-    initials: str
-    inn: str | None = None
-    org: str
-    safety: int | None = None
-    reg_num: int | None = None
-
-    class Config:
-        from_attributes = True
-
-class CourseResponse(BaseModel):
-    id: int
-    course_id: int | None = None
-    clients: List[ClientResponse]
-
-class Config:
-        from_attributes = True
-
-class GroupResponse(BaseModel):
-    id: int
-    date: date
-    isOrder: bool
-    courses: List[CourseResponse]
-    teachers: List[TeacherResponse] | None = None
-
-    class Config:
-        from_attributes = True
-
-#Обновления
-class ClientUpdate(BaseModel):
-    id: int
-    initials: str
-    inn: str | None = None
-    org: str
-    safety: int | None = None
-    reg_num: int | None = None
-
-    class Config:
-        from_attributes = True
-
-class CourseUpdate(BaseModel):
-    id: int
-    course_id: int
-    clients: List[ClientUpdate]
-
-    class Config:
-        from_attributes = True
-
-
-class GroupUpdate(BaseModel):
-    id: int
-    date: date
-    isOrder: bool
-    courses: List[CourseUpdate]
+class GroupCreate(GroupBase):
+    courseGroups: List[CourseCreate]
     teachers: List[int]
 
-    class Config:
-        from_attributes = True
-
-class GroupUpdateResponse(BaseModel):
+# Ответ
+class ClientResponse(ClientBase):
     id: int
 
+class CourseResponse(CourseBase):
+    id: int
+    clients: List[ClientResponse]
 
-# Схема для ответа с ошибкой
+class GroupResponse(GroupBase):
+    id: int
+    courseGroups: List[CourseResponse] = Field(alias="courseGroups")
+    teachers: Optional[List[TeacherResponse]] = None
+
+# Обновление
+class ClientUpdate(ClientBase):
+    id: int
+
+class CourseUpdate(CourseBase):
+    id: int
+    clients: List[ClientUpdate]
+
+class GroupUpdate(GroupBase):
+    id: int
+    courseGroups: List[CourseUpdate]
+    teachers: List[int]
+
+# Ошибка
 class ErrorResponse(BaseModel):
     detail: str

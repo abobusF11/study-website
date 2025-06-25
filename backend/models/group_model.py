@@ -19,7 +19,7 @@ class CourseGroup(Base):
     id = Column(Integer, primary_key=True, index=True)
     course_id = Column(Integer, ForeignKey('courses.id'), index=True)  # Ссылка на таблицу курсов
     group_id = Column(Integer, ForeignKey('groups.id'), index=True)
-    
+
     # Связи
     group = relationship("Group", back_populates="courses")
     course_info = relationship("Courses", back_populates="course_groups")
@@ -29,11 +29,14 @@ class Client(Base):
     __tablename__ = "clients"
 
     id = Column(Integer, primary_key=True, index=True)
-    initials = Column(String, index=True)
+    initials = Column(String, index=True, nullable=True)
     inn = Column(String, index=True, nullable=True)
-    org = Column(String, index=True)
+    org = Column(String, index=True, nullable=True)
     safety = Column(Integer, index=True, nullable=True)
     reg_num = Column(Integer, index=True, nullable=True)
+    position = Column(String, index=True, nullable=True)
+    org_inn = Column(String, index=True, nullable=True)
+    snils = Column(String, index=True, nullable=True)
 
     course_group_id = Column(Integer, ForeignKey('courses_groups.id'), index=True)
 

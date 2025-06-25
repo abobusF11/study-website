@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="57035792-d037-484f-884a-64626e44e008" name="Changes" comment="Чо то норм">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alembic/versions/ae595a208b3f_zv14.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alembic/versions/e80239c4b991_zv15.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/docs/template_cofigs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/slot10.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/slot11.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/slot12.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/slot4.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/slot5.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/slot6.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/docs/cell_configs.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/docs/cell_configs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/docs/docs_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/docs/docs_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/docs/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/docs/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/docs/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/docs/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/groups/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/groups/schemas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/teachers_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/teachers_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eslint.config.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postcss.config.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/file.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/globe.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vercel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/window.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ClientLayout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/BaseModal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/auth/hooks/useAuth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/auth/types/AuthTypes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/courses/components/CreateCourseModal/CoursesFieldsRow.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/courses/components/CreateCourseModal/CoursesList.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/courses/components/CreateCourseModal/CreateCourseModal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/courses/hooks/useCourses.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/courses/types/CourseTypes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupModals/CreateGroupModal/components/CreateGroupCourseSection.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupModals/CreateGroupModal/components/CreateGroupModal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupModals/CreateGroupModal/hooks/useGroups.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupModals/CreateGroupModal/types/GroupModalTypes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupModals/EditGroupModal/components/EditGroupCourseSection.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupModals/EditGroupModal/components/EditGroupModal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupModals/EditGroupModal/types/CourseSectionProps.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupModals/EditGroupModal/types/EditGroupModalProps.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupModals/types/GroupModalState.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupModals/utils/groupDefaults.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupModals/utils/groupSelectText.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupModals/utils/groupValidation.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupsPage/GroupTable/GroupRow.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupsPage/GroupTable/GroupTable.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupsPage/GroupsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupsPage/PeopleSelector/PeopleSelector.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupsPage/SearchBar/SearchBar.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupsPage/Toolbar/GroupsToolbar.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupsPage/Toolbar/NavButton.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/components/GroupsPage/UserTable/UserTable.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/hooks/useGroups.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/groups/types/GroupTypes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/metodist/hooks/useMethodist.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/metodist/types/MethodistTypes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/orders/hooks/useOrderActions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/orders/hooks/useOrderFilters.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/orders/hooks/useOrderForm.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/orders/hooks/useOrders.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/teachers/components/CreateTeachersModal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/teachers/hooks/useTeachers.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/teachers/types/TeacherTypes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/about/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/archive/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/auth/login/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/auth/register/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/courses/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/methodists/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/orders/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/service/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/template/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/styles/globals.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entites/course/types/course.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entites/group/model/useGroups.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entites/group/types/group.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entites/teacher/types/teacher.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/api.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/middleware.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/api/instance.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/middleware/auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/types/enums/group.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/Button/GreenButton.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/request.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/slot1.docx" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/slot1.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/slot2.docx" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/slot2.docx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;searchQuery&quot;: &quot;static&quot;,
+      &quot;state&quot;: &quot;OPEN&quot;,
+      &quot;assignee&quot;: &quot;abobusF11&quot;
+    }
+  ],
+  &quot;lastFilter&quot;: {
+    &quot;searchQuery&quot;: &quot;static&quot;,
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;abobusF11&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/abobusF11/study-website.git&quot;,
+    &quot;accountId&quot;: &quot;0758a386-2893-4d6d-a144-3cb24b520469&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2uo7STLSWrw9sW8qF7ZOOBwyh5F" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.routes.executor&quot;: &quot;Run&quot;,
+    &quot;Python.utils.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kosty/WebstormProjects/test/uploads&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;C:/Users/kosty/AppData/Roaming/JetBrains/WebStorm2024.3/node/versions/20.15.0/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.updates&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\kosty\\WebstormProjects\\test\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ],
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Python&quot;,
+      &quot;CSS&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kosty\WebstormProjects\test\uploads" />
+      <recent name="C:\Users\kosty\WebstormProjects\test\src\app\features\groups\components\EditGroupModal\components" />
+      <recent name="C:\Users\kosty\WebstormProjects\test\backend\app\template\group\docs" />
+      <recent name="C:\Users\kosty\WebstormProjects\test\backend\app\create\teachers" />
+      <recent name="C:\Users\kosty\WebstormProjects\test\backend\app\create\protocol" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kosty\WebstormProjects\test\backend\app\docs" />
+      <recent name="C:\Users\kosty\WebstormProjects\test\src\app\features\groups\components\GroupModals\components" />
+      <recent name="C:\Users\kosty\WebstormProjects\test\src\app\features\groups\components\GroupModals\utils" />
+      <recent name="C:\Users\kosty\WebstormProjects\test\src\app\features\groups\components\GroupModals\CreateGroupModal" />
+      <recent name="C:\Users\kosty\WebstormProjects\test\src\app\features\groups\components\GroupModals\EditGroupModal" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.main">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="test" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="scratch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="test" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="utils" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="test" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend/app/auth" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend/app/auth/utils.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="Python.scratch" />
+        <item itemvalue="Python.utils" />
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.26574.96" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="57035792-d037-484f-884a-64626e44e008" name="Changes" comment="" />
+      <created>1742903072499</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1742903072499</updated>
+      <workItem from="1742903073550" duration="6731000" />
+      <workItem from="1742930902555" duration="7591000" />
+      <workItem from="1743010823212" duration="14233000" />
+      <workItem from="1743064176966" duration="1551000" />
+      <workItem from="1743087867185" duration="12967000" />
+      <workItem from="1743188773432" duration="12170000" />
+      <workItem from="1743232420372" duration="9479000" />
+      <workItem from="1743258913237" duration="553000" />
+      <workItem from="1743337128962" duration="9022000" />
+      <workItem from="1743367150614" duration="3878000" />
+      <workItem from="1743421726707" duration="7831000" />
+      <workItem from="1743437944724" duration="20193000" />
+      <workItem from="1743502832983" duration="646000" />
+      <workItem from="1743506985707" duration="6408000" />
+      <workItem from="1743620221896" duration="1726000" />
+      <workItem from="1743723775403" duration="1547000" />
+      <workItem from="1743779541131" duration="2316000" />
+      <workItem from="1743801376754" duration="171000" />
+      <workItem from="1743845797315" duration="30933000" />
+      <workItem from="1743962291776" duration="1847000" />
+      <workItem from="1743965341211" duration="3988000" />
+      <workItem from="1744042772262" duration="6298000" />
+      <workItem from="1744129122578" duration="16668000" />
+      <workItem from="1744190683683" duration="7075000" />
+      <workItem from="1744233689892" duration="4154000" />
+      <workItem from="1744292358598" duration="3304000" />
+      <workItem from="1744302528052" duration="9543000" />
+      <workItem from="1744402191515" duration="592000" />
+      <workItem from="1744442260123" duration="3749000" />
+      <workItem from="1744558948781" duration="26978000" />
+      <workItem from="1744630070589" duration="7153000" />
+      <workItem from="1744727840966" duration="6080000" />
+      <workItem from="1744786532136" duration="2544000" />
+      <workItem from="1744839657039" duration="1769000" />
+      <workItem from="1744894249212" duration="21664000" />
+      <workItem from="1745053518490" duration="2331000" />
+      <workItem from="1745153691742" duration="24521000" />
+      <workItem from="1745251954749" duration="17822000" />
+      <workItem from="1745330253886" duration="24342000" />
+      <workItem from="1745399391335" duration="15543000" />
+      <workItem from="1745515462897" duration="7837000" />
+      <workItem from="1745657184937" duration="14043000" />
+      <workItem from="1745705400933" duration="10474000" />
+      <workItem from="1745749182301" duration="4984000" />
+      <workItem from="1745761716746" duration="24606000" />
+      <workItem from="1745848592536" duration="2775000" />
+      <workItem from="1745854271683" duration="8125000" />
+      <workItem from="1745873643020" duration="6611000" />
+      <workItem from="1745912365262" duration="40968000" />
+      <workItem from="1745989809081" duration="1007000" />
+      <workItem from="1746005185875" duration="3000" />
+      <workItem from="1746024650545" duration="15566000" />
+      <workItem from="1746300078491" duration="5946000" />
+      <workItem from="1746323940726" duration="4890000" />
+      <workItem from="1746469253579" duration="2454000" />
+      <workItem from="1746589712411" duration="2719000" />
+      <workItem from="1746662689569" duration="101000" />
+      <workItem from="1746710379137" duration="731000" />
+      <workItem from="1746729972713" duration="2892000" />
+      <workItem from="1746800497005" duration="1336000" />
+      <workItem from="1747106257126" duration="36999000" />
+      <workItem from="1747194264633" duration="2583000" />
+      <workItem from="1747312091509" duration="3194000" />
+      <workItem from="1747462851600" duration="24937000" />
+      <workItem from="1747559723337" duration="3701000" />
+      <workItem from="1747634260320" duration="6131000" />
+      <workItem from="1747679393586" duration="4752000" />
+      <workItem from="1747735109942" duration="19422000" />
+      <workItem from="1747829805513" duration="2167000" />
+      <workItem from="1747849297274" duration="4204000" />
+      <workItem from="1747944079044" duration="1385000" />
+      <workItem from="1747984779452" duration="4586000" />
+      <workItem from="1748011851680" duration="5083000" />
+      <workItem from="1748513665389" duration="12009000" />
+      <workItem from="1748685083989" duration="1119000" />
+      <workItem from="1748686567795" duration="10411000" />
+      <workItem from="1748706120140" duration="6784000" />
+      <workItem from="1748791984809" duration="14329000" />
+      <workItem from="1748886603254" duration="8685000" />
+      <workItem from="1748959123639" duration="13523000" />
+      <workItem from="1749028155985" duration="5902000" />
+      <workItem from="1749070412624" duration="4012000" />
+      <workItem from="1749126270694" duration="4707000" />
+      <workItem from="1749202798149" duration="2049000" />
+      <workItem from="1749235259304" duration="5713000" />
+      <workItem from="1749295849303" duration="1947000" />
+      <workItem from="1749309148925" duration="8057000" />
+      <workItem from="1749372555647" duration="4055000" />
+      <workItem from="1749412404532" duration="4822000" />
+      <workItem from="1749499045604" duration="2000" />
+      <workItem from="1749502000488" duration="1952000" />
+      <workItem from="1749565598170" duration="6450000" />
+      <workItem from="1749629781256" duration="69000" />
+      <workItem from="1749671476694" duration="2843000" />
+      <workItem from="1749724600606" duration="679000" />
+      <workItem from="1749744845187" duration="2672000" />
+      <workItem from="1749805758183" duration="9744000" />
+      <workItem from="1749982979675" duration="1465000" />
+      <workItem from="1749998992064" duration="11060000" />
+      <workItem from="1750074662383" duration="9362000" />
+      <workItem from="1750156392807" duration="605000" />
+      <workItem from="1750175554547" duration="6723000" />
+      <workItem from="1750275693407" duration="2124000" />
+      <workItem from="1750345521304" duration="7736000" />
+      <workItem from="1750398913960" duration="1696000" />
+      <workItem from="1750434075844" duration="1251000" />
+      <workItem from="1750453925711" duration="2086000" />
+      <workItem from="1750505010926" duration="2876000" />
+      <workItem from="1750539021207" duration="1512000" />
+      <workItem from="1750608793777" duration="184000" />
+      <workItem from="1750623660607" duration="41000" />
+      <workItem from="1750626176784" duration="4356000" />
+      <workItem from="1750699809476" duration="9166000" />
+      <workItem from="1750763764261" duration="2285000" />
+      <workItem from="1750785844382" duration="11100000" />
+      <workItem from="1750893722830" duration="598000" />
+      <workItem from="1750900879963" duration="1143000" />
+      <workItem from="1751055808386" duration="647000" />
+      <workItem from="1751062146913" duration="3616000" />
+      <workItem from="1751199386109" duration="7503000" />
+      <workItem from="1751228492230" duration="13421000" />
+      <workItem from="1751322454455" duration="7587000" />
+      <workItem from="1751331497654" duration="14000" />
+      <workItem from="1751366329314" duration="4522000" />
+      <workItem from="1751374575730" duration="2062000" />
+      <workItem from="1751395728930" duration="4426000" />
+      <workItem from="1751463538748" duration="17350000" />
+      <workItem from="1751578249227" duration="8020000" />
+    </task>
+    <task id="LOCAL-00001" summary="начало">
+      <option name="closed" value="true" />
+      <created>1743026187234</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1743026187234</updated>
+    </task>
+    <task id="LOCAL-00002" summary="ГОЙДА">
+      <option name="closed" value="true" />
+      <created>1743724420345</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1743724420345</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ГОЙДА">
+      <option name="closed" value="true" />
+      <created>1743724934350</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1743724934350</updated>
+    </task>
+    <task id="LOCAL-00004" summary="ГОЙДА">
+      <option name="closed" value="true" />
+      <created>1743724979024</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1743724979024</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ГОЙДА ИСПРАВЛЕННАЯ">
+      <option name="closed" value="true" />
+      <created>1743779845428</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1743779845428</updated>
+    </task>
+    <task id="LOCAL-00006" summary="ГОЙДА ИСПРАВЛЕННАЯ2222">
+      <option name="closed" value="true" />
+      <created>1743780676955</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1743780676955</updated>
+    </task>
+    <task id="LOCAL-00007" summary="ГОЙДА ИСПРАВЛЕННАЯ2222">
+      <option name="closed" value="true" />
+      <created>1743781207350</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1743781207350</updated>
+    </task>
+    <task id="LOCAL-00008" summary="ГОЙДА ИСПРАВЛЕННАЯ2222">
+      <option name="closed" value="true" />
+      <created>1743860619892</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1743860619892</updated>
+    </task>
+    <task id="LOCAL-00009" summary="ГОЙДА ИСПРАВЛЕННАЯ2222">
+      <option name="closed" value="true" />
+      <created>1743865305261</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1743865305261</updated>
+    </task>
+    <task id="LOCAL-00010" summary="ГОЙДА ИСПРАВЛЕННАЯ2222">
+      <option name="closed" value="true" />
+      <created>1743866539078</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1743866539078</updated>
+    </task>
+    <task id="LOCAL-00011" summary="ГОЙДА ИСПРАВЛЕННАЯ2222">
+      <option name="closed" value="true" />
+      <created>1743868006450</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1743868006450</updated>
+    </task>
+    <task id="LOCAL-00012" summary="ГОЙДА ИСПРАВЛЕННАЯ2222">
+      <option name="closed" value="true" />
+      <created>1743868701298</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1743868701298</updated>
+    </task>
+    <task id="LOCAL-00013" summary="ГОЙДА ИСПРАВЛЕННАЯ2222">
+      <option name="closed" value="true" />
+      <created>1743875326972</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1743875326972</updated>
+    </task>
+    <task id="LOCAL-00014" summary="ГОЙДА ИСПРАВЛЕННАЯ2222">
+      <option name="closed" value="true" />
+      <created>1743876571297</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1743876571297</updated>
+    </task>
+    <task id="LOCAL-00015" summary="ГОЙДА ИСПРАВЛЕННАЯ2222">
+      <option name="closed" value="true" />
+      <created>1743880860122</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1743880860122</updated>
+    </task>
+    <task id="LOCAL-00016" summary="ГОЙДА ИСПРАВЛЕННАЯ2222">
+      <option name="closed" value="true" />
+      <created>1743963423016</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1743963423016</updated>
+    </task>
+    <task id="LOCAL-00017" summary="ГОЙДА ИСПРАВЛЕННАЯ2222">
+      <option name="closed" value="true" />
+      <created>1743966076037</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1743966076037</updated>
+    </task>
+    <task id="LOCAL-00018" summary="ГОЙДА ИСПРАВЛЕННАЯ2222">
+      <option name="closed" value="true" />
+      <created>1743967943907</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1743967943907</updated>
+    </task>
+    <task id="LOCAL-00019" summary="КОД МЕРТВЫЙ">
+      <option name="closed" value="true" />
+      <created>1745968259631</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1745968259631</updated>
+    </task>
+    <task id="LOCAL-00020" summary="КОД НЕ МЕРТВЫЙ">
+      <option name="closed" value="true" />
+      <created>1746046557416</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1746046557416</updated>
+    </task>
+    <task id="LOCAL-00021" summary="КОД НЕ МЕРТВЫЙ">
+      <option name="closed" value="true" />
+      <created>1746057734754</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1746057734754</updated>
+    </task>
+    <task id="LOCAL-00022" summary="КОД НЕ МЕРТВЫЙ">
+      <option name="closed" value="true" />
+      <created>1746059484631</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1746059484631</updated>
+    </task>
+    <task id="LOCAL-00023" summary="КОД НЕ МЕРТВЫЙ">
+      <option name="closed" value="true" />
+      <created>1748892107236</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1748892107236</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Чо то норм">
+      <option name="closed" value="true" />
+      <created>1750813189171</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1750813189171</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Чо то норм">
+      <option name="closed" value="true" />
+      <created>1750900913648</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1750900913648</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Чо то норм">
+      <option name="closed" value="true" />
+      <created>1750900941699</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1750900941699</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Чо то норм">
+      <option name="closed" value="true" />
+      <created>1750900950740</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1750900950740</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Чо то норм">
+      <option name="closed" value="true" />
+      <created>1750900974258</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1750900974258</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Чо то норм">
+      <option name="closed" value="true" />
+      <created>1751061686981</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1751061686981</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Чо то норм">
+      <option name="closed" value="true" />
+      <created>1751331328943</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1751331328943</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="начало" />
+    <MESSAGE value="ГОЙДА V2" />
+    <MESSAGE value="ГОЙДА" />
+    <MESSAGE value="ГОЙДА ИСПРАВЛЕННАЯ" />
+    <MESSAGE value="ГОЙДА ИСПРАВЛЕННАЯ2222" />
+    <MESSAGE value="Ебанутая гойда начал делать бек и номр таблицы" />
+    <MESSAGE value="Закончил первую правку" />
+    <MESSAGE value="КОД МЕРТВЫЙ" />
+    <MESSAGE value="КОД НЕ МЕРТВЫЙ" />
+    <MESSAGE value="Чо то норм" />
+    <option name="LAST_COMMIT_MESSAGE" value="Чо то норм" />
+  </component>
+</project>

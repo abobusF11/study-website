@@ -13,7 +13,6 @@ from ...models import Metodists
 
 router = APIRouter(tags=["Methodists"])
 
-# Получение списка всех методистов (только для админа)
 @router.get("/", response_model=List[MethodistResponse])
 async def get_methodists(
     db: AsyncSession = Depends(get_db),
@@ -23,7 +22,6 @@ async def get_methodists(
     methodists = result.scalars().all()
     return methodists
 
-#Создание нового методиста
 @router.post("/")
 async def create_methodist(
     methodist: MethodistCreate,
@@ -54,7 +52,6 @@ async def create_methodist(
     
     return new_methodist
 
-# Получение методиста по ID (только для админа)
 @router.get("/{methodist_id}", response_model=schemas.UserResponse)
 async def get_methodist(
     methodist_id: int,
@@ -74,7 +71,6 @@ async def get_methodist(
     
     return methodist
 
-# Обновление данных методиста (только для админа)
 @router.put("/{methodist_id}")
 async def update_methodist(
     new_methodist: MethodistUpdateRequest,
@@ -92,10 +88,8 @@ async def update_methodist(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Methodist not found"
         )
-    
-    # Обновляем логин, если он предоставлен
+
     if new_methodist.login is not None:
-        # Проверяем, не занят ли логин другим методистом
         if new_methodist.login != methodist.login:
             login_check = await db.execute(
                 select(Metodists).where(Metodists.login == new_methodist.login)
@@ -106,25 +100,21 @@ async def update_methodist(
                     detail="Login already in use"
                 )
         methodist.login = new_methodist.login
-    
-    # Обновляем пароль, если он предоставлен
+
     if new_methodist.password is not None and new_methodist.password != "":
         methodist.hashed_password = get_password_hash(new_methodist.password)
-    
-    # Сохраняем изменения
+
     await db.commit()
     await db.refresh(methodist)
     
     return methodist
 
-# Удаление методиста (только для админа)
 @router.delete("/{methodist_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_methodist(
     methodist_id: int,
     db: AsyncSession = Depends(get_db),
     admin_check: bool = Depends(admin_required)
 ):
-    # Находим методиста
     result = await db.execute(
         select(Metodists).where(Metodists.id == methodist_id)
     )
@@ -135,8 +125,7 @@ async def delete_methodist(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Methodist not found"
         )
-    
-    # Удаляем методиста
+
     await db.delete(methodist)
     await db.commit()
     

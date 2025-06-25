@@ -10,7 +10,6 @@ from backend.models import Group, CourseGroup, Client, TeachersGroup, Teachers
 
 
 async def _process_courses(db: AsyncSession, group: Group, updated_courses: list[CourseUpdate]):
-    """Обрабатывает обновление курсов и клиентов"""
     existing_courses = {course.id: course for course in group.courses}
     updated_course_ids = {course.id for course in updated_courses}
 
@@ -50,13 +49,19 @@ async def _process_clients(db: AsyncSession, course: CourseGroup, updated_client
             client.org = client_data.org
             client.safety = client_data.safety
             client.reg_num = client_data.reg_num
+            client.position = client_data.position
+            client.org_inn = client_data.org_inn
+            client.snils = client_data.snils
         else:
             new_client = Client(
                 initials=client_data.initials,
                 inn=client_data.inn,
                 org=client_data.org,
                 safety=client_data.safety,
-                course_group_id=course.id
+                course_group_id=course.id,
+                position=client_data.position,
+                org_inn=client_data.org_inn,
+                snils=client_data.snils
             )
             db.add(new_client)
 

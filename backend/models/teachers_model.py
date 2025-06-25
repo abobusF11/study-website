@@ -11,7 +11,12 @@ class Teachers(Base):
     initials = Column(String, index=True)
     status = Column(Integer, index=True)
 
-    teacher_groups = relationship("TeachersGroup", back_populates="teacher")
+    teacher_groups = relationship(
+        "TeachersGroup",
+        back_populates="teacher",
+        cascade="all, delete-orphan",  # Удаляем только связи
+        passive_deletes=True
+    )
 
 
 class TeachersGroup(Base):
@@ -22,4 +27,4 @@ class TeachersGroup(Base):
     group_id = Column(Integer, ForeignKey('groups.id'), index=True)
 
     group = relationship("Group", back_populates="teacher_groups")
-    teacher = relationship("Teachers", cascade="all,delete", lazy="joined")
+    teacher = relationship("Teachers", back_populates="teacher_groups")

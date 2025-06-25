@@ -6,7 +6,6 @@ class Teacher(BaseModel):
     status: int
 
 class TeacherCreate(BaseModel):
-    id: int | None
     initials: str
     status: int
 
