@@ -13,6 +13,6 @@ class MethodistResponse(BaseModel):
         orm_mode = True
 
 class MethodistUpdateRequest(BaseModel):
-    id: int
+    id: str
     login: str
     password: str

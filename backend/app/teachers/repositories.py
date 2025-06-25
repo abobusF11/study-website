@@ -10,13 +10,11 @@ from .schemas import TeacherCreate
 class TeacherRepository:
     @staticmethod
     async def get_all_teachers(db: AsyncSession) -> List[Teachers]:
-        """Получить всех преподавателей"""
         result = await db.execute(select(Teachers))
         return result.scalars().all()
     
     @staticmethod
     async def get_teacher_by_id(db: AsyncSession, teacher_id: int) -> Optional[Teachers]:
-        """Получить преподавателя по ID"""
         result = await db.execute(select(Teachers).where(Teachers.id == teacher_id))
         return result.scalar_one_or_none()
     

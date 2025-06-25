@@ -10,7 +10,6 @@ from backend.models.teachers_model import Teachers
 class TeacherService:
     @staticmethod
     async def get_all_teachers(db: AsyncSession) -> List[Teachers]:
-        """Получить всех преподавателей"""
         return await TeacherRepository.get_all_teachers(db)
     
     @staticmethod
@@ -26,7 +25,6 @@ class TeacherService:
     
     @staticmethod
     async def update_teacher(db: AsyncSession, teacher_id: int, teacher_data: TeacherCreate) -> Teachers:
-        """Обновить данные преподавателя"""
         try:
             teacher = await TeacherRepository.get_teacher_by_id(db, teacher_id)
             if not teacher:

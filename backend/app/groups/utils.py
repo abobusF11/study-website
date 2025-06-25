@@ -10,7 +10,6 @@ from backend.models import Group, CourseGroup, Client, TeachersGroup, Teachers
 
 
 async def _process_courses(db: AsyncSession, group: Group, updated_courses: list[CourseUpdate]):
-    """Обрабатывает обновление курсов и клиентов"""
     existing_courses = {course.id: course for course in group.courses}
     updated_course_ids = {course.id for course in updated_courses}
 

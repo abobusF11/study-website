@@ -34,6 +34,7 @@ class Client(Base):
     org = Column(String, index=True)
     safety = Column(Integer, index=True, nullable=True)
     reg_num = Column(Integer, index=True, nullable=True)
+    position = Column(String, index=True, nullable=True)
 
     course_group_id = Column(Integer, ForeignKey('courses_groups.id'), index=True)
 

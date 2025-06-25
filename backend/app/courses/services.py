@@ -34,15 +34,7 @@ class CourseService:
         """Создать новый курс"""
         course = await CourseRepository.create_course(db, course_data)
         return CourseResponse.from_orm(course)
-    
-    @staticmethod
-    async def update_course(course_id: int, course_data: CourseCreate, db: AsyncSession = Depends(get_db)) -> Optional[CourseResponse]:
-        """Обновить существующий курс"""
-        course = await CourseRepository.update_course(db, course_id, course_data)
-        if not course:
-            return None
-        return CourseResponse.from_orm(course)
-    
+
     @staticmethod
     async def delete_course(course_id: int, db: AsyncSession = Depends(get_db)) -> bool:
         """Удалить курс"""

@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List
 from datetime import date
 
@@ -12,6 +12,7 @@ class ClientCreate(BaseModel):
     org: str
     safety: int | None = None
     reg_num: int | None = None
+    position: str | None = None
 
     class Config:
         from_attributes = True
@@ -24,15 +25,9 @@ class CourseCreate(BaseModel):
 
 class GroupCreate(BaseModel):
     date: date
-    courses: List[CourseCreate]
-    teachers: List[int] | None = None
+    courseGroups: List[CourseCreate]
+    teachers: List[int]
     isOrder: bool
-
-
-
-# Обновления
-class GroupCreateResponse(BaseModel):
-    id: int
 
 
 class ClientResponse(BaseModel):
@@ -42,29 +37,33 @@ class ClientResponse(BaseModel):
     org: str
     safety: int | None = None
     reg_num: int | None = None
+    position: str | None = None
 
     class Config:
         from_attributes = True
+
 
 class CourseResponse(BaseModel):
     id: int
     course_id: int | None = None
     clients: List[ClientResponse]
 
-class Config:
+    class Config:
         from_attributes = True
+
 
 class GroupResponse(BaseModel):
     id: int
     date: date
     isOrder: bool
-    courses: List[CourseResponse]
+    courseGroups: List[CourseResponse] = Field(alias="courseGroups")
     teachers: List[TeacherResponse] | None = None
 
     class Config:
         from_attributes = True
 
-#Обновления
+
+# Обновления
 class ClientUpdate(BaseModel):
     id: int
     initials: str
@@ -72,9 +71,11 @@ class ClientUpdate(BaseModel):
     org: str
     safety: int | None = None
     reg_num: int | None = None
+    position: str | None = None
 
     class Config:
         from_attributes = True
+
 
 class CourseUpdate(BaseModel):
     id: int
@@ -89,14 +90,11 @@ class GroupUpdate(BaseModel):
     id: int
     date: date
     isOrder: bool
-    courses: List[CourseUpdate]
+    courseGroups: List[CourseUpdate]
     teachers: List[int]
 
     class Config:
         from_attributes = True
-
-class GroupUpdateResponse(BaseModel):
-    id: int
 
 
 # Схема для ответа с ошибкой

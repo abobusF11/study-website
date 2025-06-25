@@ -33,44 +33,6 @@ export const createGroup = async (group: GroupCreate, fromUser: boolean): Promis
     }
 };
 
-export const updateGroup = async (group: GroupUpdate): Promise<GroupUpdateResponse> => {
-    try {
-        const response = await api.put(
-            "/template/group/update",
-            group,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            }
-        );
-        return response.data;
-    } catch (error) {
-        console.error('Full error:', error);
-        throw error;
-    }
-};
-
-export const deleteUserGroup = async (groupId: number) => {
-    try {
-        const response = await api.delete(
-            "/clients/group/delete",
-            {
-                params: {
-                    group_id: String(groupId)
-                },
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            }
-        );
-        return response.data;
-    } catch (error) {
-        console.error('Full error:', error);
-        throw error;
-    }
-}
-
 
 export const createTeachers = async (
     teachers: TeacherCreate[]

@@ -1,18 +1,5 @@
 from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional, Union, Literal
-
-# Схемы для полей курса
-class FieldOption(BaseModel):
-    label: str
-    value: Union[str, int]
-
-class CourseField(BaseModel):
-    name: str
-    key: str
-    type: Literal["string", "number", "select", "boolean"]
-    required: bool = False
-    options: Optional[List[FieldOption]] = None
-
 # Схемы для курсов
 class CourseCreate(BaseModel):
     name: str
@@ -25,8 +12,14 @@ class CourseResponse(BaseModel):
     hours: int
     fields: List[str]
 
-    class Config:
-        orm_mode = True
+    @classmethod
+    def from_orm(cls, obj):
+        return cls(
+            id=obj.id,
+            name=obj.name,
+            hours=obj.hours,
+            fields=[field.key for field in obj.course_fields]
+        )
 
 # Схема для ошибок
 class ErrorResponse(BaseModel):
